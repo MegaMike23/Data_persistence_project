@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class MenuUiHandler : MonoBehaviour
 {
 	public Text PreviousScoreText;
-    public InputField mainInputField;
+	public Text BestPlayerText;
+	public InputField mainInputField;
 
 	// Checks if there is anything entered into the input field.
 	void LockInput(InputField input)
@@ -32,6 +33,9 @@ public class MenuUiHandler : MonoBehaviour
 		}
 
 		PreviousScoreText.text = MainManager_DataPersistance.Instance.PreviousScore;
+
+		BestPlayerText.text = MainManager_DataPersistance.Instance.nameHighScorePlayer +
+			" - HIGH SCORE: " + MainManager_DataPersistance.Instance.scoreHighScorePlayer;
 
 		//Adds a listener that invokes the "LockInput" method when the player finishes editing the main input field.
 		//Passes the main input field into the method when "LockInput" is invoked

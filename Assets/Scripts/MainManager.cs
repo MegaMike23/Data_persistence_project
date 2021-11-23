@@ -67,6 +67,11 @@ public class MainManager : MonoBehaviour
                 if (MainManager_DataPersistance.Instance != null)
                 {
                     MainManager_DataPersistance.Instance.PreviousScore = m_Points.ToString();
+
+                    if (m_Points >= System.Convert.ToInt32(MainManager_DataPersistance.Instance.scoreHighScorePlayer))
+                    {
+                        MainManager_DataPersistance.Instance.SaveHighPlayer();
+                    }
                 }
                 SceneManager.LoadScene(0);
             }
@@ -75,7 +80,7 @@ public class MainManager : MonoBehaviour
 
     void SetPlayerInfo()
     {
-        InfoPlayerText.text = "Best Score: 0 // Name: " + MainManager_DataPersistance.Instance.namePlayer;
+        InfoPlayerText.text = "Player: " + MainManager_DataPersistance.Instance.namePlayer;
     }
 
     void AddPoint(int point)
