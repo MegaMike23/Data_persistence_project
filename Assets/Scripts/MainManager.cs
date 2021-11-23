@@ -12,6 +12,7 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public Text InfoPlayerText;
+    public Text InfoHighScorePlayerText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -25,7 +26,7 @@ public class MainManager : MonoBehaviour
     {
         if (MainManager_DataPersistance.Instance != null)
         {
-            SetPlayerInfo();
+            SetCanvaInfo();
         }
 
         const float step = 0.6f;
@@ -66,7 +67,7 @@ public class MainManager : MonoBehaviour
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 if (MainManager_DataPersistance.Instance != null)
                 {
-                    MainManager_DataPersistance.Instance.PreviousScore = m_Points.ToString();
+                    MainManager_DataPersistance.Instance.PreviousScore = m_Points;
 
                     if (m_Points >= System.Convert.ToInt32(MainManager_DataPersistance.Instance.scoreHighScorePlayer))
                     {
@@ -78,9 +79,12 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    void SetPlayerInfo()
+    void SetCanvaInfo()
     {
         InfoPlayerText.text = "Player: " + MainManager_DataPersistance.Instance.namePlayer;
+        InfoHighScorePlayerText.text = "Best Score: "
+            + MainManager_DataPersistance.Instance.scoreHighScorePlayer.ToString()
+            + " Name: " + MainManager_DataPersistance.Instance.nameHighScorePlayer;
     }
 
     void AddPoint(int point)

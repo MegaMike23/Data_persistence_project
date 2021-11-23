@@ -32,7 +32,9 @@ public class MenuUiHandler : MonoBehaviour
 			mainInputField.text = MainManager_DataPersistance.Instance.namePlayer;
 		}
 
-		PreviousScoreText.text = MainManager_DataPersistance.Instance.PreviousScore;
+		PreviousScoreText.text = MainManager_DataPersistance.Instance.PreviousScore.ToString();
+
+		MainManager_DataPersistance.Instance.LoadHighPlayer(); // Cargar el mejor jugador
 
 		BestPlayerText.text = MainManager_DataPersistance.Instance.nameHighScorePlayer +
 			" - HIGH SCORE: " + MainManager_DataPersistance.Instance.scoreHighScorePlayer;

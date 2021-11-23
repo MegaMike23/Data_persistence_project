@@ -8,9 +8,9 @@ public class MainManager_DataPersistance : MonoBehaviour
     public static MainManager_DataPersistance Instance;
 
 	public string namePlayer;
-    public string PreviousScore = "0";
+    public int PreviousScore = 0;
     public string nameHighScorePlayer;
-    public string scoreHighScorePlayer;
+    public int scoreHighScorePlayer;
 
     private void Awake()
     {
@@ -23,7 +23,8 @@ public class MainManager_DataPersistance : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        LoadHighPlayer();
+        //Lo cargamos desde MenuUIHandler cada vez que volvemos a la scene start
+        //LoadHighPlayer();
     }
 
     //Para guardar datos necesitamos una clase, y poner los parámetros que queremos guardar
@@ -31,7 +32,7 @@ public class MainManager_DataPersistance : MonoBehaviour
     class SaveData
     {
         public string NameHighPlayer;
-        public string HighPlayerScore;
+        public int HighPlayerScore;
     }
 
     public void SaveHighPlayer()
